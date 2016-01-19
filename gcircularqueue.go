@@ -23,7 +23,7 @@ func (c *CircularQueue) Push(e interface{}) {
 
 func (c *CircularQueue) Shift() (e interface{}) {
 	if c.IsEmpty() {
-		panic("Queue is empty")
+		return nil
 	}
 	e = c.Elements[c.first]
 	c.first = (c.first + 1) % c.Size

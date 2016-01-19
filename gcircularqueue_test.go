@@ -32,6 +32,11 @@ func TestShift(t *testing.T) {
 	if e != firstElement {
 		t.Error("It can not shift the first element")
 	}
+	// shift from a empty queue
+	e = cq.Shift()
+	if e != nil {
+		t.Errorf("Can not shift from a empty queue, it is:%v", e)
+	}
 }
 
 func TestIsEmpty(t *testing.T) {
