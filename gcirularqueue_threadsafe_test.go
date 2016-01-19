@@ -6,8 +6,8 @@ import (
 
 func TestQueueThreadSafeInit(t *testing.T) {
 	cq := NewCircularQueueThreadSafe(5)
-	if cq.Size != 6 {
-		t.Error("It has wrong size:", cq.Size)
+	if cq.capacity != 6 {
+		t.Error("It has wrong size:", cq.capacity)
 	}
 
 	if !cq.IsEmpty() {
@@ -69,6 +69,7 @@ func TestThreadSafeCirculartAility(t *testing.T) {
 	cq := NewCircularQueueThreadSafe(3)
 	cq.Push(1)
 	cq.Push(2)
+	cq.Push(3)
 	cq.Shift()
 	cq.Push(3)
 }

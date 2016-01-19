@@ -6,8 +6,8 @@ import (
 
 func TestQueueInit(t *testing.T) {
 	cq := NewCircularQueue(5)
-	if cq.Size != 6 {
-		t.Error("It has wrong size:", cq.Size)
+	if cq.capacity != 6 {
+		t.Error("It has wrong capacity:", cq.capacity)
 	}
 
 	if !cq.IsEmpty() {
@@ -68,6 +68,7 @@ func TestCirculartAility(t *testing.T) {
 	cq := NewCircularQueue(3)
 	cq.Push(1)
 	cq.Push(2)
+	cq.Push(3)
 	cq.Shift()
 	cq.Push(3)
 }

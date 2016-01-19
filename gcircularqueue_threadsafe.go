@@ -22,7 +22,7 @@ func (cq *CircularQueueThreadSafe) IsEmpty() bool {
 func (cq *CircularQueueThreadSafe) IsFull() bool {
 	cq.RLock()
 	defer cq.RUnlock()
-	return cq.first == (cq.end+1)%cq.Size
+	return cq.CircularQueue.IsFull()
 }
 
 func (cq *CircularQueueThreadSafe) Push(element interface{}) {

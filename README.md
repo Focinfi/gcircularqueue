@@ -1,6 +1,6 @@
 gcircularqueue is Circular Queue in Golang
 
-#### Install 
+### Install 
 
 `go get github.com/Focinfi/gcircularqueue`
 
@@ -8,7 +8,7 @@ gcircularqueue is Circular Queue in Golang
 
 This package is a typical circular with interfaces as following:
 
-##### New
+#### New
 
   Normal queue
   ```go
@@ -20,21 +20,21 @@ This package is a typical circular with interfaces as following:
   queue := gcircularqueue.NewCircularQueueThreadSafe(size int)
   ```
 
-##### IsEmpty/IsFull
+#### IsEmpty/IsFull
 
   ```go
   isEmpty := queue.IsEmpty()
   isFull := queue.IsFull()
   ```
 
-##### Push
+#### Push
 
   ```go
   queue.Push("kitty")
   // note: it will panic if pushing a thing into a full queue
   ```
 
-##### Shift
+#### Shift
 
   ```go
   element := queue.Shift()
