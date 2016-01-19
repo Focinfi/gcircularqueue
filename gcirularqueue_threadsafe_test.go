@@ -4,8 +4,8 @@ import (
 	"testing"
 )
 
-func TestQueueInit(t *testing.T) {
-	cq := NewCircularQueue(5)
+func TestQueueThreadSafeInit(t *testing.T) {
+	cq := NewCircularQueueThreadSafe(5)
 	if cq.Size != 6 {
 		t.Error("It has wrong size:", cq.Size)
 	}
@@ -15,8 +15,8 @@ func TestQueueInit(t *testing.T) {
 	}
 }
 
-func TestPush(t *testing.T) {
-	cq := NewCircularQueue(5)
+func TestThreadSafePush(t *testing.T) {
+	cq := NewCircularQueueThreadSafe(1)
 	firstElement := "First"
 	cq.Push(firstElement)
 	if cq.elements[0] != firstElement {
@@ -24,38 +24,39 @@ func TestPush(t *testing.T) {
 	}
 }
 
-func TestShift(t *testing.T) {
-	cq := NewCircularQueue(5)
+func TestThreadSafeShift(t *testing.T) {
+	cq := NewCircularQueueThreadSafe(5)
 	firstElement := "First"
 	cq.Push(firstElement)
 	e := cq.Shift()
 	if e != firstElement {
 		t.Error("It can not shift the first element")
 	}
-	// shift from a empty queue
+	// shift from a empty queueThreadSafe
 	e = cq.Shift()
 	if e != nil {
-		t.Errorf("Can not shift from a empty queue, it is:%v", e)
+		t.Errorf("Can not shift from a empty queueThreadSafe, it is:%v", e)
 	}
 }
 
-func TestIsEmpty(t *testing.T) {
-	cq := NewCircularQueue(5)
+func TestThreadSafeIsEmpty(t *testing.T) {
+	cq := NewCircularQueueThreadSafe(5)
 	if !cq.IsEmpty() {
 		t.Error("It's IsEmpty Func is wrong")
 	}
 }
 
-func TestIsFull(t *testing.T) {
-	cq := NewCircularQueue(1)
+func TestThreadSafeIsFull(t *testing.T) {
+	cq := NewCircularQueueThreadSafe(1)
 	cq.Push("First")
 	if !cq.IsFull() {
 		t.Error("It's IsFull is wrong")
 	}
+
 }
 
-func TestFIFO(t *testing.T) {
-	cq := NewCircularQueue(3)
+func TestThreadSafeFIFO(t *testing.T) {
+	cq := NewCircularQueueThreadSafe(3)
 	cq.Push(1)
 	cq.Push(2)
 	firstElement := cq.Shift()
@@ -64,8 +65,8 @@ func TestFIFO(t *testing.T) {
 	}
 }
 
-func TestCirculartAility(t *testing.T) {
-	cq := NewCircularQueue(3)
+func TestThreadSafeCirculartAility(t *testing.T) {
+	cq := NewCircularQueueThreadSafe(3)
 	cq.Push(1)
 	cq.Push(2)
 	cq.Shift()
