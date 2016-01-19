@@ -19,8 +19,8 @@ func TestPush(t *testing.T) {
 	cq := NewCircularQueue(5)
 	firstElement := "First"
 	cq.Push(firstElement)
-	if cq.Elements[0] != firstElement {
-		t.Error("It's Push Func is wrong, the first elment is:", cq.Elements[0])
+	if cq.elements[0] != firstElement {
+		t.Error("It's Push Func is wrong, the first elment is:", cq.elements[0])
 	}
 }
 
